@@ -2,7 +2,13 @@
 
 namespace Kata
 {
-  internal class GameScore
+  internal interface IGameScore
+  {
+    void PlayerOneScores();
+    void PlayerTwoScores();
+  }
+
+  internal class GameScore : IGameScore
   {
     internal const string Love = "Love";
     internal const string Fifteen = "15";
@@ -14,7 +20,7 @@ namespace Kata
     };
     private int countPlayerOne;
     private int countPlayerTwo;
-    internal GameScore(IDisplay display)
+    public GameScore(IDisplay display)
     {
       _display = display;
       countPlayerOne = 0;
@@ -22,13 +28,13 @@ namespace Kata
       BeautifyScore();
     }
 
-    internal void PlayerOneScores()
+    public void PlayerOneScores()
     {
       countPlayerOne++;
       BeautifyScore();
     }
 
-    internal void PlayerTwoScores()
+    public void PlayerTwoScores()
     {
       countPlayerTwo++;
       BeautifyScore();
