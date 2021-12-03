@@ -67,7 +67,7 @@ namespace Kata
       return $"{scoreOrder[countPlayerOne]} - {scoreOrder[countPlayerTwo]}";
       
     }
-    
+    //can we refactor these calculations... YES WE CAN! -> IsAPlayerWin
     private bool IsPlayerTwoWins() => countPlayerTwo == 4 || countPlayerTwo > 4 && countPlayerTwo - countPlayerOne > 1;
 
     private bool IsPlayerOneWins() => countPlayerOne == 4 || countPlayerOne > 4 && countPlayerOne - countPlayerTwo > 1 ;
