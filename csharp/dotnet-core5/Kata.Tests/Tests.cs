@@ -136,7 +136,21 @@ namespace Kata.Tests
       SimulateFromDeuceGame(Player.One, Player.Two);
       displayMock.Verify(x => x.DisplayScore($"{GameScore.Deuce}"), Times.Exactly(2));
     }
-    
+
+    // PARAM the values
+    [Fact]
+    public void Should_InvokeDisplayScoreWithWinPlayerOne_When_AfterAdvantagePlayerOne()
+    {
+      SimulateFromDeuceGame(Player.One, Player.One);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.PlayerOneWins}"), Times.Once);
+    }
+
+    [Fact]
+    public void Should_InvokeDisplayScoreWithWinPlayerTwo_When_AfterAdvantagePlayerTwo()
+    {
+      SimulateFromDeuceGame(Player.Two, Player.Two);
+      displayMock.Verify(x => x.DisplayScore($"{GameScore.PlayerTwoWins}"), Times.Once);
+    }
     #endregion
 
     private void SimulateGame(params Player[] playerScores)

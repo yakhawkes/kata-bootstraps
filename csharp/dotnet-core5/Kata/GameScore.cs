@@ -16,7 +16,7 @@ namespace Kata
     private readonly IDisplay display;
     private readonly List<string> scoreOrder = new ()
     {
-      Love, Fifteen, Thirty, Forty, Deuce
+      Love, Fifteen, Thirty, Forty
     };
     private int countPlayerOne;
     private int countPlayerTwo;
@@ -25,55 +25,52 @@ namespace Kata
       this.display = display;
       countPlayerOne = 0;
       countPlayerTwo = 0;
-      BeautifyScore();
+      display.DisplayScore(GetScore());
     }
 
     internal void PlayerOneScores()
     {
       countPlayerOne++;
-      BeautifyScore();
+      display.DisplayScore(GetScore());
     }
 
     internal void PlayerTwoScores()
     {
       countPlayerTwo++;
-      BeautifyScore();
+      display.DisplayScore(GetScore());
     }
-
-    private void BeautifyScore()
+    /// <summary>
+    /// Get the score from the game
+    /// </summary>
+    private string GetScore()
     {
-      // I'm not really happy :(
-      // :__(
       if (IsGameDeuce())
       {
-        display.DisplayScore($"{Deuce}");
+        return Deuce;
       }
-      else if (IsGamePlayerOneAdvantage())
+      if (IsGamePlayerOneAdvantage())
       {
-        display.DisplayScore($"{PlayerOneAdvantage}");
+        return PlayerOneAdvantage;
       }
-      else if (IsPlayerTwoAdvantage())
+      if (IsPlayerTwoAdvantage())
       {
-        display.DisplayScore($"{PlayerTwoAdvantage}");
+        return PlayerTwoAdvantage;
       }
-      else if (IsPlayerOneWins())
+      if (IsPlayerOneWins())
       {
-        display.DisplayScore($"{PlayerOneWins}");
+        return PlayerOneWins;
       }
-      else if (IsPlayerTwoWins())
+      if (IsPlayerTwoWins())
       {
-        display.DisplayScore($"{PlayerTwoWins}");
+        return PlayerTwoWins;
       }
-      else
-      {
-        display.DisplayScore($"{scoreOrder[countPlayerOne]} - {scoreOrder[countPlayerTwo]}");
-      }
+      return $"{scoreOrder[countPlayerOne]} - {scoreOrder[countPlayerTwo]}";
+      
     }
+    
+    private bool IsPlayerTwoWins() => countPlayerTwo == 4 || countPlayerTwo > 4 && countPlayerTwo - countPlayerOne > 1;
 
-    // TODO: make these better
-    private bool IsPlayerTwoWins() => countPlayerTwo == 4;
-
-    private bool IsPlayerOneWins() => countPlayerOne == 4;
+    private bool IsPlayerOneWins() => countPlayerOne == 4 || countPlayerOne > 4 && countPlayerOne - countPlayerTwo > 1 ;
 
     private bool IsPlayerTwoAdvantage() => countPlayerTwo > 3 && (countPlayerTwo - countPlayerOne == 1);
 
