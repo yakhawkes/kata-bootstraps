@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kata
 {
-  internal interface IDisplay
+  public interface IDisplay
   {
     void ShowSubTotal(int total);
   }

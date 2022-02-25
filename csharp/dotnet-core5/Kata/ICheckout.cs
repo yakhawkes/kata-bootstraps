@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kata
 {
-  internal interface ICheckout
+  public interface ICheckout
   { 
     void Scan(string item);
   }

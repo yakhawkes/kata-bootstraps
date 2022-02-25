@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using Moq;
 using Xunit;
@@ -21,7 +22,7 @@ namespace Kata.Tests
       // checkout.Scan("A");
     }
 
-    [Fact]
+    [Fact(Skip = "Because we will never be millionaires.")] 
     public void Yet()
     {
       // Assert
