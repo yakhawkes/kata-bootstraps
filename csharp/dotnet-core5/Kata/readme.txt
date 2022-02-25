@@ -8,11 +8,11 @@ For example, item ‘A’ might cost 50 pounds individually, but this week we
 have a special offer: buy three ‘A’s and they’ll cost you 130. 
 The current pricing and offers are as follows:
 
-SKU	Unit Price	Special Price
-A	50	3 for 130
-B	30	2 for 45
-C	20	
-D	15	
+SKU Unit Price	Special Price Name
+A	50			3 for 130	 Apples 
+B	30			2 for 45	 Bananas
+C	20						 Cherries
+D	15						 Dates
 
 Our checkout accepts items in any order, so that if we scan a B, an A, and 
 another B, we’ll recognize the two B’s and price them at 45 (for a total 
