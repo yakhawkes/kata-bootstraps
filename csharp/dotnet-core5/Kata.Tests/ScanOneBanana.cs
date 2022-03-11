@@ -22,7 +22,7 @@ namespace Kata.Tests
       this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>()), Times.Once);
     }
     [Fact]
-    public void Total_ShouldBe30()
+    public void Total_ShouldBePriceOfBFromPricelist()
     {
       this.total.Should().Be(this.priceList["B"]);
     }

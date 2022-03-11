@@ -22,8 +22,9 @@ namespace Kata.Tests
     {
       this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>()), Times.Once);
     }
+
     [Fact]
-    public void Total_ShouldBe50()
+    public void Total_ShouldBePriceOfAFromPricelist()
     {
       this.total.Should().Be(this.priceList["A"]); 
       
