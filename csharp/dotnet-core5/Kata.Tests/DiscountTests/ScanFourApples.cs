@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace Kata.Tests
+namespace Kata.Tests.DiscountTests
 {
   public class ScanFourApples : SetUpAbstract
   {
@@ -14,9 +14,10 @@ namespace Kata.Tests
     }
 
     [Fact]
-    public void Total_ShouldBe180()
+    public void Total_ShouldApplyCorrectDiscount()
     {
-      this.total.Should().Be(180);
+      int discount = 4 / discountList["A"].Count * discountList["A"].Discount;
+      this.total.Should().Be(priceList["A"] * 4 - discount);
     } 
   }
 }

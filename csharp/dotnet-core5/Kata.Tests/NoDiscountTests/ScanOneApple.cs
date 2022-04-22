@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace Kata.Tests
+namespace Kata.Tests.NoDiscountTests
 {
   public class ScanOneApple : SetUpAbstract
   {
@@ -24,7 +18,7 @@ namespace Kata.Tests
     }
 
     [Fact]
-    public void Total_ShouldBePriceOfAFromPricelist()
+    public void Total_ShouldBePriceOfAFromPriceList()
     {
       this.total.Should().Be(this.priceList["A"]); 
       

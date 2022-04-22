@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Moq;
 
-namespace Kata.Tests
+namespace Kata.Tests.NoDiscountTests
 {
   public abstract class SetUpAbstract
   {
@@ -20,12 +16,15 @@ namespace Kata.Tests
       {"D", 15}
     };
 
+    protected Dictionary<string, (int Count, int Discount)> discountList = new Dictionary<string, (int Count, int Discount)>()
+    {
+    };
+
   protected SetUpAbstract()
     {
       this.displayMock = new Mock<IDisplay>(); 
       this.displayMock.Setup(d => d.ShowSubTotal(It.IsAny<int>())).Callback<int>(t => this.total = t);
-      this.checkout = new Checkout(this.displayMock.Object, priceList);
-
+      this.checkout = new Checkout(this.displayMock.Object, priceList, discountList);
     }
   }
 }

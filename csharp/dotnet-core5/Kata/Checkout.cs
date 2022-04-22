@@ -12,14 +12,13 @@ namespace Kata
     private readonly Dictionary<string, int> priceList;
     private int subTotal;
     private List<string> basket = new List<string>();
-    private readonly Dictionary<string, (int Count, int Discount)> discountList = new Dictionary<string, (int Count, int Discount)>();
+    private readonly Dictionary<string, (int Count, int Discount)> discountList;
 
-    public Checkout(IDisplay display, Dictionary<string, int> priceList)
+    public Checkout(IDisplay display, Dictionary<string, int> priceList, Dictionary<string, (int Count, int Discount)> discountList)
     {
       this.display = display;
       this.priceList = priceList;
-      this.discountList.Add("A", (3, 20));
-      this.discountList.Add("B", (Count: 2, Discount: 15));
+      this.discountList = discountList;
     }
 
     public void Scan(string item)

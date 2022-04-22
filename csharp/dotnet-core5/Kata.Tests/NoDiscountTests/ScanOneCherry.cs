@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace Kata.Tests
+namespace Kata.Tests.NoDiscountTests
 {
   public class ScanOneCherry :SetUpAbstract
   {
@@ -22,7 +17,7 @@ namespace Kata.Tests
       this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>()), Times.Once);
     }
     [Fact]
-    public void Total_ShouldBePriceOfCFromPricelist()
+    public void Total_ShouldBePriceOfCFromPriceList()
     {
       this.total.Should().Be(this.priceList["C"]);
 

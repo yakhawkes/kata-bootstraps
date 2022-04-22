@@ -2,7 +2,7 @@
 using Moq;
 using Xunit;
 
-namespace Kata.Tests
+namespace Kata.Tests.NoDiscountTests
 {
   public class ScanTwoApples : SetUpAbstract
   {
@@ -19,7 +19,7 @@ namespace Kata.Tests
     }
 
     [Fact]
-    public void Total_ShouldBePriceOfAFromPricelistTimesTwo()
+    public void Total_ShouldBePriceOfAFromPriceListTimesTwo()
     {
       this.total.Should().Be(this.priceList["A"] * 2);
     }

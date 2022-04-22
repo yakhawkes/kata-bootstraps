@@ -2,7 +2,8 @@
 using Xunit;
 
 /*
- * ──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ *
+──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 ────────█═════════════════█
 ──────█═════════════════════█
 ─────█════════▄▄▄▄▄▄▄════════█
@@ -30,9 +31,10 @@ using Xunit;
 ──────────▐▓▓▓▓▌──▐▓▓▓▓▌
 ─────────▄████▀────▀████▄
 ─────────▀▀▀▀────────▀▀▀▀
- */
+ wooooooooooooooooooooooooooooot
+*/
 
-namespace Kata.Tests
+namespace Kata.Tests.NoDiscountTests
 {
   public class ScanTwoBananas : SetUpAbstract
   {
@@ -44,9 +46,9 @@ namespace Kata.Tests
 
     // TODO get rid of magic numbers, also in ScanFourApples and ScanThreeApples
     [Fact]
-    public void SubTotal_ShouldBe45()
+    public void SubTotal_ShouldBePriceOfAFromPriceListTimesTwo()
     {
-      this.total.Should().Be(45);
+      this.total.Should().Be(priceList["B"] * 2);
     }
   }
 }
