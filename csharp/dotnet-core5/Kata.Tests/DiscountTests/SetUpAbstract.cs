@@ -6,6 +6,7 @@ namespace Kata.Tests.DiscountTests
   public abstract class SetUpAbstract
   {
     protected int total;
+    protected int discountAmount;
     protected Mock<IDisplay> displayMock;
     protected ICheckout checkout;
     protected Dictionary<string, int> priceList = new Dictionary<string, int>()
@@ -25,7 +26,11 @@ namespace Kata.Tests.DiscountTests
   protected SetUpAbstract()
     {
       this.displayMock = new Mock<IDisplay>(); 
-      this.displayMock.Setup(d => d.ShowSubTotal(It.IsAny<int>())).Callback<int>(t => this.total = t);
+      this.displayMock.Setup(d => d.ShowSubTotal(It.IsAny<int>(), It.IsAny<int>())).Callback<int, int>((t, s) =>
+      {
+        this.total = t;
+        this.discountAmount = s;
+      } );
       this.checkout = new Checkout(this.displayMock.Object, priceList, discountList);
     }
   }

@@ -43,8 +43,7 @@ namespace Kata.Tests.NoDiscountTests
       this.checkout.Scan("B");
       this.checkout.Scan("B");
     }
-
-    // TODO get rid of magic numbers, also in ScanFourApples and ScanThreeApples
+    
     [Fact]
     public void SubTotal_ShouldBePriceOfAFromPriceListTimesTwo()
     {

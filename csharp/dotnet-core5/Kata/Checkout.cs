@@ -11,9 +11,44 @@ namespace Kata
     private readonly IDisplay display;
     private readonly Dictionary<string, int> priceList;
     private int subTotal;
+    private int discountAmount;
     private List<string> basket = new List<string>();
     private readonly Dictionary<string, (int Count, int Discount)> discountList;
+    /*
+                                                                 ██████                    
+                                                                ██░░░░██                  
+                                                                ██░░░░░░██████            
+                                                                ██░░░░░░░░░░░░████        
+                                                                  ██░░░░░░░░██░░░░██      
+                                                                  ██░░░░░░░░░░░░░░░░████  
+                                                                  ██▒▒░░░░░░░░░░░░░░▒▒▒▒██
+                                                                ██░░░░▒▒▒▒░░░░░░░░▒▒▒▒▒▒██
+                                                              ██░░░░░░░░▒▒▒▒▒▒██████████  
+                                              ████████████████░░░░░░░░░░▒▒▒▒██            
+                                      ████████░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██              
+                                    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒██              
+                                  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒██                
+                                ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██                  
+                              ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██                
+                              ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██                
+                            ██░░░░██░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒░░░░░░██                
+                            ██░░██░░░░░░░░░░░░░░████░░░░▒▒▒▒▒▒▒▒▒▒██░░░░████              
+                            ██░░██░░░░░░░░░░░░░░░░██░░▒▒▒▒▒▒▒▒▒▒████▒▒░░░░██              
+                          ██░░░░██▒▒░░░░░░░░░░░░░░██▒▒▒▒▒▒██████  ██▒▒▒▒░░██              
+                          ██░░░░██▒▒▒▒░░░░░░░░░░░░░░██▒▒▒▒██        ██▒▒░░██              
+                          ██░░░░▒▒██▒▒▒▒░░░░░░░░░░░░██████          ██▒▒▒▒██              
+                        ██░░░░░░▒▒██▒▒▒▒▒▒░░░░░░░░░░██              ██▒▒██                
+                        ██░░░░▒▒▒▒██▒▒▒▒▒▒░░░░░░░░██                  ██                  
+                      ██░░░░▒▒▒▒▒▒████▒▒▒▒▒▒░░░░░░██                                      
+                    ██░░░░▒▒▒▒▒▒████████▒▒▒▒░░░░██                                        
+                ████░░░░▒▒▒▒▒▒██  ██████▒▒▒▒▒▒████                                        
+        ████████░░░░░░▒▒▒▒▒▒██      ████▒▒▒▒▒▒██                                          
+  ██████░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒██        ██████▒▒▒▒██                                          
+██░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒████          ██████▒▒▒▒░░██████████                                
+██████████████████████              ██████████▒▒▒▒▒▒░░░░░░██                              
+                                      ██████████████████████                              
 
+     */
     public Checkout(IDisplay display, Dictionary<string, int> priceList, Dictionary<string, (int Count, int Discount)> discountList)
     {
       this.display = display;
@@ -25,10 +60,11 @@ namespace Kata
     {
       this.basket.Add(item);
       this.subTotal = basket.Sum(a => this.priceList[a]);
+      
+      this.discountAmount = discountList.Sum(x => this.GetDiscount(x)); ;
 
-      this.subTotal -= discountList.Sum(x=> this.GetDiscount(x));
-
-      this.display.ShowSubTotal(this.subTotal);
+      this.subTotal -= this.discountAmount;
+      this.display.ShowSubTotal(this.subTotal, this.discountAmount);
     }
 
     private int GetDiscount(KeyValuePair<string, (int Count, int Discount)> discountRule)

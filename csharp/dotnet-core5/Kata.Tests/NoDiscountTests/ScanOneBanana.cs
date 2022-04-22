@@ -4,6 +4,39 @@ using Xunit;
 
 namespace Kata.Tests.NoDiscountTests
 {
+  /// <summary>
+  ///                                                             
+  ///                              ████                        
+  ///                            ████████                      
+  ///                            ██░░░░██                      
+  ///                            ██░░░░████                    
+  ///                            ██░░░░░░████                  
+  ///                            ██░░░░░░░░██                  
+  ///                            ██░░░░░░░░████                
+  ///                            ██░░░░░░░░░░██                
+  ///                        ██████████░░░░░░████              
+  ///                      ██  ██      ██░░░░░░██              
+  ///                      ████████    ██░░░░░░██              
+  ///                      ██  ██      ██░░░░░░██              
+  ///                        ██████████░░░░██░░██              
+  ///                          ██░░░░░░██████░░██              
+  ///                          ████████▓▓▓▓██░░██              
+  ///                            ██▓▓▓▓▓▓██░░░░██              
+  ///                            ██▓▓████░░░░░░████████        
+  ///              ██████      ██████░░░░░░░░████      ██      
+  ///            ██      ████  ██░░░░░░░░░░░░██        ██      
+  ///            ██        ██  ██░░░░░░░░░░██████      ██      
+  ///            ██      ██████░░░░░░░░░░░░██  ████████        
+  ///              ██████    ██░░░░░░░░░░██      ██            
+  ///                  ██  ██░░░░░░░░░░██    ██████            
+  ///                  ████░░░░░░░░░░██████████                
+  ///                ████████░░░░████████████                  
+  ///            ████████  ████████      ████████              
+  ///          ██      ████            ████      ██            
+  ///          ██          ██        ██          ██            
+  ///            ████████████        ████████████              
+  ///
+  /// </summary>
   public class ScanOneBanana :SetUpAbstract
   {
     public ScanOneBanana()
@@ -14,7 +47,7 @@ namespace Kata.Tests.NoDiscountTests
     [Fact]
     public void ShowSubTotal_ShouldBeInvokedOnce()
     {
-      this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>()), Times.Once);
+      this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>(), It.IsAny<int>()), Times.Once);
     }
     [Fact]
     public void Total_ShouldBePriceOfBFromPriceList()

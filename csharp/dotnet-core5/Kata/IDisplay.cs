@@ -2,6 +2,6 @@
 {
   public interface IDisplay
   {
-    void ShowSubTotal(int total);
+    void ShowSubTotal(int total, int totalDiscount);
   }
 }

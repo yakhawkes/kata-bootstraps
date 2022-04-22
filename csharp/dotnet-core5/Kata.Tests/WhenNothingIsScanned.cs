@@ -15,7 +15,7 @@ namespace Kata.Tests
     [Fact]
     public void ShowSubTotal_ShouldBeNeverInvoked()
     {
-      this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>()), Times.Never);
+      this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>(), It.IsAny<int>()), Times.Never);
     }
   }
 }

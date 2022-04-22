@@ -15,7 +15,7 @@ namespace Kata.Tests.NoDiscountTests
     [Fact]
     public void ShowSubTotal_ShouldBeInvokedTwice()
     {
-      this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>()), Times.Exactly(2));
+      this.displayMock.Verify(display => display.ShowSubTotal(It.IsAny<int>(),It.IsAny<int>()), Times.Exactly(2));
     }
 
     [Fact]

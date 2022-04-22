@@ -16,7 +16,7 @@ namespace Kata.Tests
       // Arrange
       DisplayMock = new Mock<IDisplay>();
       DisplayMock.Setup(d => d
-                   .ShowSubTotal(It.IsAny<int>()))
+                   .ShowSubTotal(It.IsAny<int>(), It.IsAny<int>()))
                  .Callback<int>(t => total = t);
       // Act
       // checkout.Scan("A");
