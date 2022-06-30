@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using FluentAssertions;
+using Xunit;
 
 namespace CsharpPoker.Tests
 {
@@ -7,35 +8,34 @@ namespace CsharpPoker.Tests
     [Fact]
     public void CanCreateCard()
     {
-      var card = new Card(CardValue.Ace, CardSuit.Clubs);
+      Card card = new Card(CardValue.Ace, CardSuit.Clubs);
 
       Assert.NotNull(card);
-    }
-
-    [Fact]
-    public void CanCreateCardWithValue()
-    {
-      var card = new Card(CardValue.Ace, CardSuit.Clubs);
-
-      Assert.NotNull(card.Suit);
-      Assert.NotNull(card.Value);
+      card.Should().NotBeNull();
     }
 
     [Fact]
     public void ValuesSetViaConstructorAreCorrect()
     {
-      var card = new Card(CardValue.Ace, CardSuit.Clubs);
+      Card card = new Card(CardValue.Ace, CardSuit.Clubs);
 
-      Assert.Equal(CardSuit.Clubs, card.Suit);
-      Assert.Equal(CardValue.Ace, card.Value);
+      //Assert.Equal(CardSuit.Clubs, card.Suit);
+      //Assert.Equal(CardValue.Ace, card.Value);
+      card.Suit.Should().Be(CardSuit.Clubs);
+      card.Value.Should().Be(CardValue.Ace);
     }
 
     [Fact]
     public void CanDescribeCard()
     {
-      var card = new Card(CardValue.Ace, CardSuit.Spades);
+      CardValue cardValue = CardValue.Ace;
+      CardSuit cardSuit = CardSuit.Spades;
 
-      Assert.Equal("Ace of Spades", card.ToString());
+      Card card = new Card(CardValue.Ace, CardSuit.Spades);
+
+      //Assert.Equal("Ace of Spades", card.ToString());
+      card.ToString().Should().Be($"{cardValue} of {cardSuit}");
+
     }
   }
 }
