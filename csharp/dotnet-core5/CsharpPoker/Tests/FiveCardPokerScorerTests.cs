@@ -30,7 +30,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Two, CardSuit.Hearts));
 
       //Assert.Equal(HandRank.HighCard, hand.GetHandRank());
-      hand.GetHandRank().Should().Be(HandRank.HighCard);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.HighCard);
 
     }
 
@@ -44,7 +44,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Five, CardSuit.Spades));
       hand.Draw(new Card(CardValue.Six, CardSuit.Spades));
       //Assert.Equal(HandRank.Flush, hand.GetHandRank());
-      hand.GetHandRank().Should().Be(HandRank.Flush);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.Flush);
     }
 
     [Fact]
@@ -57,7 +57,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.King, CardSuit.Spades));
       hand.Draw(new Card(CardValue.Ace, CardSuit.Spades));
       //Assert.Equal(HandRank.RoyalFlush, hand.GetHandRank());
-      hand.GetHandRank().Should().Be(HandRank.RoyalFlush);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.RoyalFlush);
 
     }
 
@@ -72,7 +72,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Ace, CardSuit.Spades));
 
 
-      hand.GetHandRank().Should().Be(HandRank.Pair);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.Pair);
     }
 
     [Fact]
@@ -84,7 +84,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Nine, CardSuit.Spades));
       hand.Draw(new Card(CardValue.Ten, CardSuit.Hearts));
       hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
-      hand.GetHandRank().Should().Be(HandRank.ThreeOfAKind);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.ThreeOfAKind);
     }
 
     [Fact]
@@ -96,7 +96,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
       hand.Draw(new Card(CardValue.Ten, CardSuit.Hearts));
       hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
-      hand.GetHandRank().Should().Be(HandRank.FourOfAKind);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.FourOfAKind);
 
     }
 
@@ -109,7 +109,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
       hand.Draw(new Card(CardValue.Jack, CardSuit.Hearts));
       hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
-      hand.GetHandRank().Should().Be(HandRank.FullHouse);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.FullHouse);
 
     }
 
@@ -123,7 +123,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.King, CardSuit.Hearts));
       hand.Draw(new Card(CardValue.Ace, CardSuit.Spades));
 
-      hand.GetHandRank().Should().Be(HandRank.Straight);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.Straight);
     }
 
     [Fact]
@@ -136,7 +136,7 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Six, CardSuit.Hearts));
       hand.Draw(new Card(CardValue.Three, CardSuit.Spades));
 
-      hand.GetHandRank().Should().Be(HandRank.Straight);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.Straight);
     }
 
     [Fact]
@@ -149,7 +149,21 @@ namespace CsharpPoker.Tests
       hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
       hand.Draw(new Card(CardValue.King, CardSuit.Hearts));
 
-      hand.GetHandRank().Should().Be(HandRank.Straight);
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.Straight);
+    }
+
+    [Fact]
+    public void CanScoreTwoPair()
+    {
+      var hand = new Hand();
+      hand.Draw(new Card(CardValue.Ace, CardSuit.Clubs));
+      hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
+      hand.Draw(new Card(CardValue.Nine, CardSuit.Spades));
+      hand.Draw(new Card(CardValue.Ten, CardSuit.Hearts));
+      hand.Draw(new Card(CardValue.Ace, CardSuit.Spades));
+
+      Ranker.GetHandRank(hand.Cards).Should().Be(HandRank.TwoPair);
+
     }
   }
 }

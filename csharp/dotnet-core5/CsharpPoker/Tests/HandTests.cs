@@ -4,7 +4,6 @@ using FluentAssertions;
 
 namespace CsharpPoker.Tests
 {
-  // TODO To be continued https://edcharbeneau.com/csharp-functional-workshop-instructions/#chapter6.1
   public class HandTests
   {
     private readonly FiveCardPokerScorerTests fiveCardPokerScorerTests = new FiveCardPokerScorerTests();

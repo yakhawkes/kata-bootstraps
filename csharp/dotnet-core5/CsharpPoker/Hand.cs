@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 /*
@@ -123,16 +124,6 @@ namespace CsharpPoker
         => nextCard.Value > highCard.Value
           ? nextCard
           : highCard); //return Cards.OrderByDescending(x => x.Value).First();
-
-    public HandRank GetHandRank() =>
-      FiveCardPokerScorer.IsRoyalFlush(Cards) ? HandRank.RoyalFlush :
-      FiveCardPokerScorer.IsFourOfAKind(Cards) ? HandRank.FourOfAKind :
-      FiveCardPokerScorer.IsFullHouse(Cards) ? HandRank.FullHouse :
-      FiveCardPokerScorer.IsFlush(Cards) ? HandRank.Flush :
-      FiveCardPokerScorer.IsStraight(Cards) ? HandRank.Straight :
-      FiveCardPokerScorer.IsThreeOfAKind(Cards) ? HandRank.ThreeOfAKind :
-      FiveCardPokerScorer.IsPair(Cards) ? HandRank.Pair :
-      HandRank.HighCard;
 
     // We leave this out for now, as there is no need to implement this. The TwoPairs-test will come later in the tutorial. We will then do a big refactoring :) 
     //private int CountOfAKind(int num) => cards.ToKindAndQuantities().Count(c => c.Value == num);
